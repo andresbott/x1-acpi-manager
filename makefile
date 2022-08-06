@@ -8,6 +8,7 @@ default: help;
 # ======================================================================================
 
 build: ## build the debian package
+	@GOOS=linux GOARCH=amd64 go build -o out/x1-acpi-manager main.go
 	@nfpm package -f nfpm.yaml -p deb
 
 publish: build ## publish the release to github

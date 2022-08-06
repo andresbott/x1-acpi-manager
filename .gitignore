@@ -8,3 +8,5 @@
 *.iml
 
 **.deb
+out/x1-cpu-manager
+out/x1-acpi-manager

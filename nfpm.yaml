@@ -1,7 +1,7 @@
 name: "x1-acpi-manager"
 arch: "all"
 platform: "linux"
-version: "0.1.0"
+version: "0.1.1"
 section: "default"
 priority: "optional"
 depends:
@@ -16,18 +16,18 @@ description: |
 license: "GNU GPL v3"
 #changelog: "changelog.yaml"
 contents:
-# snapscreen
-- src: ./src/acpiprf.sh
+
+- src: ./zarf/acpiprf.sh
   dst: /usr/sbin/acpiprf
 
-- src: ./src/x1-cpu-manager.sh
-  dst: /usr/sbin/x1-cpu-manager.sh
+- src: ./out/x1-acpi-manager
+  dst: /usr/sbin/x1-acpi-manager
 
-- src: ./src/systemd.service
-  dst: /lib/systemd/system/x1-carbon-gen9-cpu-manager.service
+- src: ./zarf/systemd.service
+  dst: /lib/systemd/system/x1-carbon-gen9-acpi-manager.service
 
-- src: /lib/systemd/system/x1-carbon-gen9-cpu-manager.service
-  dst: /etc/systemd/system/x1-carbon-gen9-cpu-manager.service
+- src: /lib/systemd/system/x1-carbon-gen9-acpi-manager.service
+  dst: /etc/systemd/system/x1-carbon-gen9-acpi-manager.service
   type: symlink
 
 
@@ -46,5 +46,5 @@ overrides:
 #      postremove: ./scripts/postremove.sh
   deb:
     scripts:
-      postinstall: ./src/postinstall.sh
-#      preremove: ./scripts/preremove.sh
+      postinstall: ./zarf/postinstall.sh
+      preremove:   ./zarf/preremove.sh

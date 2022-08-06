@@ -3,7 +3,7 @@ Description=X1 Carbon Gen9 Thermal limiter
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/x1-cpu-manager.sh
+ExecStart=/usr/sbin/x1-acpi-manager
 
 [Install]
 WantedBy=multi-user.target

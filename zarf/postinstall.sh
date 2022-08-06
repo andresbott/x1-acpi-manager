@@ -5,7 +5,7 @@
 # Declare an array of string with type
 declare -a exec=(
 "/usr/sbin/acpiprf"
-"/usr/sbin/x1-cpu-manager.sh"
+"/usr/sbin/x1-acpi-manager"
 )
 
 # Iterate the string array using for loop
@@ -15,4 +15,5 @@ for item in ${exec[@]}; do
 done
 
 # start the service after install
-systemctl start x1-carbon-gen9-cpu-manager.service
+systemctl daemon-reload
+systemctl start x1-carbon-gen9-acpi-manager.service
