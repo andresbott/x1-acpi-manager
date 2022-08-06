@@ -1,0 +1,9 @@
+[Unit]
+Description=X1 Carbon Gen9 Thermal limiter
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/acpi-hammer.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,50 @@
+name: "x1-acpi-manager"
+arch: "all"
+platform: "linux"
+version: "0.1.0"
+section: "default"
+priority: "optional"
+depends:
+- whiptail
+
+maintainer: "Andres Bott <contact@andresbott.com>"
+description: |
+  Utilities to scale down cpu performance and prevent thermal shutdown. 
+
+#vendor: "FooBarCorp"
+#homepage: "http://example.com"
+license: "GNU GPL v3"
+#changelog: "changelog.yaml"
+contents:
+# snapscreen
+- src: ./src/acpiprf.sh
+  dst: /usr/local/sbin/acpiprf
+
+- src: ./src/x1-cpu-manager.sh
+  dst: /usr/local/sbin/x1-cpu-manager.sh
+
+- src: ./src/systemd.service
+  dst: /lib/systemd/system/x1-carbon-gen9-cpu-manager.service
+
+- src: /lib/systemd/system/x1-carbon-gen9-cpu-manager.service
+  dst: /etc/systemd/system/x1-carbon-gen9-cpu-manager.service
+  type: symlink
+
+
+#- src: ./bar
+#  dst: /usr/local/bin/bar
+#- src: ./foobar.conf
+#  dst: /etc/foobar.conf
+#  type: config
+#- src: /usr/local/bin/foo
+#  dst: /sbin/foo
+#  type: symlink
+overrides:
+#  rpm:
+#    scripts:
+#      preinstall: ./scripts/preinstall.sh
+#      postremove: ./scripts/postremove.sh
+  deb:
+    scripts:
+      postinstall: ./zarf/postinstall.sh
+#      preremove: ./scripts/preremove.sh
