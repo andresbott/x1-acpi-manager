@@ -15,7 +15,8 @@ publish: build ## publish the release to github
 	@zarf/publish.sh
 
 clean: ## clean
-	@rm *.deb
+	@rm *.deb || true
+	@rm out/x1-acpi-manager || true
 
 help: ## Show this help
 	@egrep '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST)  | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m·%-20s\033[0m %s\n", $$1, $$2}'
