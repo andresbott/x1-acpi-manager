@@ -3,7 +3,7 @@
 GITREPO="andresbott/x1-acpi-manager"
 
 ## read the version from nfpm
-v=
+v=$(cat nfpm.yaml | grep version | cut -d":" -f 2 | tr -d '"' | xargs)
 VERSION="v$v"
 
 PACKAGENAME=$(cat nfpm.yaml | grep name | cut -d":" -f 2 | tr -d '"' | xargs)
@@ -25,7 +25,7 @@ ID=$(jq -r '.id' <<< "$response")
 
 echo "Uploading asset"
 ## upload asset to the release
-FILENAME=$(basename "${PACKAGENAME}_$v"_all.deb")
+FILENAME=$(basename "${PACKAGENAME}_""$v""_all.deb")
 curl -s \
   -H "Authorization: token $TOKEN" \
   -H "Content-Type: $(file -b --mime-type "$FILENAME")" \
