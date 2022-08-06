@@ -18,10 +18,10 @@ license: "GNU GPL v3"
 contents:
 # snapscreen
 - src: ./src/acpiprf.sh
-  dst: /usr/local/sbin/acpiprf
+  dst: /usr/sbin/acpiprf
 
 - src: ./src/x1-cpu-manager.sh
-  dst: /usr/local/sbin/x1-cpu-manager.sh
+  dst: /usr/sbin/x1-cpu-manager.sh
 
 - src: ./src/systemd.service
   dst: /lib/systemd/system/x1-carbon-gen9-cpu-manager.service
@@ -46,5 +46,5 @@ overrides:
 #      postremove: ./scripts/postremove.sh
   deb:
     scripts:
-      postinstall: ./zarf/postinstall.sh
+      postinstall: ./src/postinstall.sh
 #      preremove: ./scripts/preremove.sh

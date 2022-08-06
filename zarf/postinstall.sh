@@ -4,8 +4,8 @@
 
 # Declare an array of string with type
 declare -a exec=(
-"/usr/local/sbin/acpiprf"
-"/usr/local/sbin/x1-cpu-manager.sh"
+"/usr/sbin/acpiprf"
+"/usr/sbin/x1-cpu-manager.sh"
 )
 
 # Iterate the string array using for loop
@@ -14,3 +14,5 @@ for item in ${exec[@]}; do
    chmod 755  "$item"
 done
 
+# start the service after install
+systemctl start x1-carbon-gen9-cpu-manager.service
