@@ -15,5 +15,6 @@ for item in ${exec[@]}; do
 done
 
 # start the service after install
+systemctl enable x1-carbon-gen9-acpi-manager.service
 systemctl daemon-reload
 systemctl start x1-carbon-gen9-acpi-manager.service
