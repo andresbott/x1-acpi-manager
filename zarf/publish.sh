@@ -11,6 +11,7 @@ PACKAGENAME=$(cat nfpm.yaml | grep name | cut -d":" -f 2 | tr -d '"' | xargs)
 TOKEN=$(cat "$HOME/.goreleaser/github-cloud-token")
 
 # create release
+echo "creating the release"
 payload='{"tag_name":"'"$VERSION"'","target_commitish":"main","name":"'"$VERSION"'","body": "Release '"$VERSION"'","draft":false,"prerelease":false,"generate_release_notes":false}'
 response=$(curl -s \
   -X POST \
